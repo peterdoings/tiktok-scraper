@@ -319,6 +319,7 @@ export class TikTokScraper extends EventEmitter {
         { uri, method, qs, body, form, headers, json, gzip, followAllRedirects, simple = true }: OptionsWithUri,
         bodyOnly = true,
     ): Promise<T> {
+        console.log('will make request')
         // eslint-disable-next-line no-async-promise-executor
         return new Promise(async (resolve, reject) => {
             const proxy = this.getProxy;
@@ -368,6 +369,7 @@ export class TikTokScraper extends EventEmitter {
                     resolve(bodyOnly ? response.body : response);
                 }, this.timeout);
             } catch (error) {
+                console.log(`received error ${error}`)
                 reject(error);
             }
         });
