@@ -321,7 +321,6 @@ export class TikTokScraper extends EventEmitter {
         { uri, method, qs, body, form, headers, json, gzip, followAllRedirects, simple = true }: OptionsWithUri,
         bodyOnly = true,
     ): Promise<T> {
-        console.log('will make request');
         // eslint-disable-next-line no-async-promise-executor
         return new Promise(async (resolve, reject) => {
             const proxy = this.getProxy;
@@ -361,6 +360,8 @@ export class TikTokScraper extends EventEmitter {
             }
 
             try {
+                console.log('will make request');
+                console.log(options);
                 const response = await rp(options);
                 // Extract valid csrf token
                 if (options.method === 'HEAD') {
