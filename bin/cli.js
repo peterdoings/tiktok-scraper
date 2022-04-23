@@ -70,6 +70,7 @@ const startScraper = async argv => {
         }
     } catch (error) {
         console.log(error);
+        console.log(error.stack);
     }
 };
 

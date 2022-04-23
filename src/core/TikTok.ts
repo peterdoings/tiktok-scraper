@@ -305,7 +305,6 @@ export class TikTokScraper extends EventEmitter {
                 proxy,
             };
         }
-        console.log('not using a proxy');
 
         return {
             socks: false,
@@ -360,13 +359,6 @@ export class TikTokScraper extends EventEmitter {
             }
 
             try {
-                const resp2 = await rp({
-                    uri: 'https://google.com',
-                    method: 'GET',
-                });
-                console.log(resp2);
-                console.log('will make request');
-                console.log(options);
                 const response = await rp(options);
                 // Extract valid csrf token
                 if (options.method === 'HEAD') {
@@ -380,7 +372,6 @@ export class TikTokScraper extends EventEmitter {
                     resolve(bodyOnly ? response.body : response);
                 }, this.timeout);
             } catch (error) {
-                console.log(`received error ${error}`);
                 reject(error);
             }
         });
