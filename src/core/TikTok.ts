@@ -344,7 +344,7 @@ export class TikTokScraper extends EventEmitter {
                 ...(proxy.proxy && proxy.socks ? { agent: proxy.proxy } : {}),
                 ...(proxy.proxy && !proxy.socks ? { proxy: `http://${proxy.proxy}/` } : {}),
                 ...(this.strictSSL === false ? { rejectUnauthorized: false } : {}),
-                timeout: 10000,
+                timeout: 60000,
             } as unknown) as OptionsWithUri;
 
             const session = this.sessionList[Math.floor(Math.random() * this.sessionList.length)];

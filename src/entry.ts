@@ -185,8 +185,8 @@ export const signUrl = async (input: string, options = {} as Options): Promise<s
     if (options?.sessionFile) {
         options.sessionList = await sessionFromFile(options?.sessionFile);
     }
-    const contructor: TikTokConstructor = { ...getInitOptions(), ...options, ...{ type: 'signature' as ScrapeType, input } };
-    const scraper = new TikTokScraper(contructor);
+    const constructor: TikTokConstructor = { ...getInitOptions(), ...options, ...{ type: 'signature' as ScrapeType, input } };
+    const scraper = new TikTokScraper(constructor);
 
     const result = await scraper.signUrl();
     return result;

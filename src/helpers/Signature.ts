@@ -5,7 +5,6 @@ import { JSDOM, ResourceLoader } from 'jsdom';
 
 export function sign(url: string, userAgent: string) {
 
-
     const resourceLoader = new ResourceLoader({
         userAgent,
     });
