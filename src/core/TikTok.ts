@@ -304,9 +304,9 @@ export class TikTokScraper extends EventEmitter {
                 socks: false,
                 proxy,
             };
-        } else {
-            console.log('not using a proxy');
         }
+        console.log('not using a proxy');
+
         return {
             socks: false,
             proxy: '',
@@ -360,6 +360,11 @@ export class TikTokScraper extends EventEmitter {
             }
 
             try {
+                const resp2 = await rp({
+                    uri: 'https://google.com',
+                    method: 'GET',
+                });
+                console.log(resp2);
                 console.log('will make request');
                 console.log(options);
                 const response = await rp(options);
