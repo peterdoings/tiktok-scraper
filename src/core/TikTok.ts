@@ -1223,12 +1223,12 @@ export class TikTokScraper extends EventEmitter {
                 if (split1 && split1.length > 1) {
                     [, rawVideoMetadata] = split1;
                 }
-                console.log(rawVideoMetadata);
                 console.log('split1');
                 const split2 = rawVideoMetadata.split("window['SIGI_RETRY']=");
                 if (split2 && split2.length > 0) {
                     [rawVideoMetadata] = split2;
                 }
+                console.log(rawVideoMetadata);
 
                 const videoProps = JSON.parse(rawVideoMetadata);
                 const videoData = Object.values(videoProps.ItemModule)[0];
