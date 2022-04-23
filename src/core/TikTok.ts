@@ -1198,10 +1198,10 @@ export class TikTokScraper extends EventEmitter {
         try {
             const response = await this.request<string>(options);
             if (!response) {
-                throw new Error(`Can't extract video meta data`);
+                throw new Error(`http request failed: ${response}`);
             }
 
-            if (response.includes("__NEXT_DATA__")){
+            if (response.includes('__NEXT_DATA__')) {
                 const rawVideoMetadata = response
                     .split(/<script id="__NEXT_DATA__" type="application\/json" nonce="[\w-]+" crossorigin="anonymous">/)[1]
                     .split(`</script>`)[0];
@@ -1211,19 +1211,17 @@ export class TikTokScraper extends EventEmitter {
                 return videoData as FeedItems;
             }
 
-            if (response.includes("SIGI_STATE")) {
+            if (response.includes('SIGI_STATE')) {
                 // Sometimes you may receive a state in different format, so we should parse it too
                 // New format - https://pastebin.com/WLUpL0ei
-                const rawVideoMetadata = response
-                    .split("window['SIGI_STATE']=")[1]
-                    .split(";window['SIGI_RETRY']=")[0];
+                const rawVideoMetadata = response.split("window['SIGI_STATE']=")[1].split(";window['SIGI_RETRY']=")[0];
 
                 const videoProps = JSON.parse(rawVideoMetadata);
                 const videoData = Object.values(videoProps.ItemModule)[0];
                 return videoData as FeedItems;
             }
 
-            throw new Error('No available parser for html page')
+            throw new Error('No available parser for html page');
         } catch (error) {
             throw new Error(`Can't extract video metadata: ${this.input}`);
         }
