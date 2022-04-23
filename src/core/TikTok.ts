@@ -1218,16 +1218,13 @@ export class TikTokScraper extends EventEmitter {
             if (response.includes('SIGI_STATE')) {
                 // Sometimes you may receive a state in different format, so we should parse it too
                 // New format - https://pastebin.com/WLUpL0ei
-                const rawVideoMetadata = response.match(/ItemModule" *: *({.*}), *"UserModule/);
-                if (!rawVideoMetadata) {
+                const matchResults = response.match(/ItemModule" *: *({.*}), *"UserModule/);
+                if (!matchResults) {
                     throw new Error('Could not parse raw video metadata');
                 }
-                console.log(rawVideoMetadata);
-                console.log(`index 1: ${rawVideoMetadata[1]}`);
-                console.log(`keys: ${Object.keys(rawVideoMetadata)}`);
-                const videoProps = JSON.parse(rawVideoMetadata[1]);
-                console.log(`videoProps: ${videoProps}`);
-                const videoData = Object.values(videoProps.ItemModule)[0];
+                const itemModule = JSON.parse(matchResults[1]);
+                console.log(`videoProps: ${itemModule}`);
+                const videoData = Object.values(itemModule)[0];
                 return videoData as FeedItems;
             }
 
