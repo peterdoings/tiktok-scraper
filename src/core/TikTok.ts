@@ -1224,7 +1224,7 @@ export class TikTokScraper extends EventEmitter {
                 }
                 console.log(rawVideoMetadata);
                 console.log(`index 1: ${rawVideoMetadata[1]}`);
-                Object.keys(`keys: ${rawVideoMetadata}`);
+                console.log(`keys: ${Object.keys(rawVideoMetadata)}`);
                 const videoProps = JSON.parse(rawVideoMetadata[1]);
                 const videoData = Object.values(videoProps.ItemModule)[0];
                 return videoData as FeedItems;
