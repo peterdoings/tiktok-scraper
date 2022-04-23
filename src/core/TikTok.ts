@@ -1220,6 +1220,7 @@ export class TikTokScraper extends EventEmitter {
                 // New format - https://pastebin.com/WLUpL0ei
                 const rawVideoMetadata = response.match(/ItemModule" *: *({.*}), *"UserModule/);
                 console.log(rawVideoMetadata);
+                console.log(rawVideoMetadata.length);
                 if (!rawVideoMetadata) {
                     throw new Error('Could not parse raw video metadata');
                 }
