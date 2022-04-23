@@ -1218,12 +1218,12 @@ export class TikTokScraper extends EventEmitter {
             if (response.includes('SIGI_STATE')) {
                 // Sometimes you may receive a state in different format, so we should parse it too
                 // New format - https://pastebin.com/WLUpL0ei
-                console.log(response);
                 let rawVideoMetadata = response;
                 const split1 = rawVideoMetadata.split("window['SIGI_STATE']=");
                 if (split1 && split1.length > 0) {
                     [, rawVideoMetadata] = split1;
                 }
+                console.log(rawVideoMetadata);
                 console.log('split1');
                 const split2 = rawVideoMetadata.split("window['SIGI_RETRY']=");
                 if (split2 && split2.length > 0) {
