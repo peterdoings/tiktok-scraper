@@ -1223,8 +1223,8 @@ export class TikTokScraper extends EventEmitter {
                     throw new Error('Could not parse raw video metadata');
                 }
                 console.log(rawVideoMetadata);
-                console.log(rawVideoMetadata[1]);
-                Object.keys(rawVideoMetadata);
+                console.log(`index 1: ${rawVideoMetadata[1]}`);
+                Object.keys(`keys: ${rawVideoMetadata}`);
                 const videoProps = JSON.parse(rawVideoMetadata[1]);
                 const videoData = Object.values(videoProps.ItemModule)[0];
                 return videoData as FeedItems;
