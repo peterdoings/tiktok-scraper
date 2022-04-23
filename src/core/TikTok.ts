@@ -1223,7 +1223,8 @@ export class TikTokScraper extends EventEmitter {
 
             throw new Error('No available parser for html page');
         } catch (error) {
-            throw new Error(`Can't extract video metadata: ${this.input}`);
+            const errorError = error as Error;
+            throw new Error(`${errorError.message}: ${this.input}`);
         }
     }
 
