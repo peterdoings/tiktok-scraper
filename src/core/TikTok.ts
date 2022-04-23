@@ -371,7 +371,10 @@ export class TikTokScraper extends EventEmitter {
                 // Extract valid csrf token
                 if (options.method === 'HEAD') {
                     const csrf = response.headers['x-ware-csrf-token'];
-                    this.csrf = csrf.split(',')[1] as string;
+                    console.log(`csrf: ${csrf}`);
+                    if (csrf) {
+                        this.csrf = csrf.split(',')[1] as string;
+                    }
                 }
                 setTimeout(() => {
                     resolve(bodyOnly ? response.body : response);
