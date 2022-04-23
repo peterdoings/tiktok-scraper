@@ -1220,7 +1220,7 @@ export class TikTokScraper extends EventEmitter {
                 // New format - https://pastebin.com/WLUpL0ei
                 let rawVideoMetadata = response;
                 const split1 = rawVideoMetadata.split("window['SIGI_STATE']=");
-                if (split1 && split1.length > 0) {
+                if (split1 && split1.length > 1) {
                     [, rawVideoMetadata] = split1;
                 }
                 console.log(rawVideoMetadata);
